@@ -14,7 +14,7 @@ one = 0
 error = 0
 turncount = 0
 num_battles = 500
-johtoxalola = sim.dict_to_team_set(sample_teams['johtoxalola'])
+johtoxalola = sim.dict_to_team_set(sample_teams['johtox-alola'])
 genetic = sim.dict_to_team_set(sample_teams['secondgeneticsearch'])
 teams = []
 for i in range(2):
