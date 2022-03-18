@@ -55,19 +55,28 @@ def generate_vgc_team():
 
     return team
 
-def generate_team(num_pokemon=6, domain='all'):
+def generate_team(num_pokemon=6, domain='all', pokemon_list=[-1]):
     team = []
     species = []
     items = []
+    k = 0
     pokedex = list(domain_all)
     items = list(dex.item_dex.keys())
     natures = list(dex.nature_dex.keys())
 
-    while len(team) < 6:
+    while len(team) < num_pokemon:
         pokemon = {}
-        r = random.randint(0,len(pokedex)-1)
+
+        if (pokemon_list[0] == -1) :
+            r = random.randint(0,len(pokedex)-1)
+            print(len(pokedex))
+            break
+        else :
+            r = pokemon_list[k]
+            k += 1
+
         pokemon['species'] = pokedex[r]
-        del pokedex[r]
+        # del pokedex[r]
 
         pokemon['moves'] = []
         moves = list(dex.simple_learnsets[pokemon['species']])
