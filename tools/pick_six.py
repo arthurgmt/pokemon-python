@@ -76,6 +76,7 @@ def generate_team(num_pokemon=6, domain='all', pokemon_list=[-1]):
             k += 1
 
         pokemon['species'] = pokedex[r]
+        # print(pokemon['species'])
         # del pokedex[r]
 
         pokemon['moves'] = []

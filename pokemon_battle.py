@@ -2,6 +2,9 @@ from asyncio.windows_events import NULL
 from tkinter import *
 from tkinter import ttk
 
+from datetime import datetime
+import time
+
 import json
 from data import dex
 from functools import partial
@@ -12,8 +15,19 @@ from tools.pick_six import generate_team
 with open('data/domains/all.json') as f:
     domain_all = json.load(f)
 
+def ending() :
+    """ Ending function, called at the end of the process"""
+
+    root.quit()
+
 
 def launch_battle():
+
+    tps1 = time.process_time()
+    
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    print(f"Starting : {current_time}\n")
 
     battle_number = int(battle_number_entry.get())
 
@@ -24,13 +38,12 @@ def launch_battle():
     player2 = 0
     player1 = 0 
 
-    teams = []
-    teams.append(sim.dict_to_team_set(generate_team(pokemon_list=pokemons[0])))
-    teams.append(sim.dict_to_team_set(generate_team(pokemon_list=pokemons[1])))
-
     for i in range(battle_number):
-        
 
+        teams = []
+        teams.append(sim.dict_to_team_set(generate_team(pokemon_list=pokemons[0])))
+        teams.append(sim.dict_to_team_set(generate_team(pokemon_list=pokemons[1])))
+        
         battle = sim.Battle('single', 'Nic', teams[0], 'Sam', teams[1], debug=False)
         # print(battle.p1.pokemon)
         # print(teams)
@@ -61,8 +74,13 @@ def launch_battle():
     print("Player 2 :  " + str(team_p2) + "\n\n")
 
     print("Win poucentage : \n")
-    print("Player 1 : " + str(int((player1/match)*100)) + " (" + str(player1) + "/" + str(match) +").")
-    print("Player 2 : " + str(int((player2/match)*100)) + " (" + str(player2) + "/" + str(match) +").")
+    print("Player 1 : " + str(float((player1*100)/match)) + " (" + str(player1) + "/" + str(match) +").")
+    print("Player 2 : " + str(float((player2*100)/match)) + " (" + str(player2) + "/" + str(match) +").")
+
+    tps2 = time.process_time()
+    print(f"\nDuration : {tps2 - tps1} sec")
+
+    ending()
 
 
 def get_entry():

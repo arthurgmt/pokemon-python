@@ -831,18 +831,6 @@
         "gen": 2,
         "desc": "Holder's Dragon-type attacks have 1.2x power."
     },
-    "dragonfang": {
-        "id": "dragonfang",
-        "name": "Dragon Fang",
-        "spritenum": 106,
-        "fling": {
-            "basePower": 70
-        },
-        "onBasePowerPriority": 6,
-        "num": 235,
-        "gen": 2,
-        "desc": "Holder's Dragon-type attacks have 1.2x power."
-    },
     "dragongem": {
         "id": "dragongem",
         "name": "Dragon Gem",
